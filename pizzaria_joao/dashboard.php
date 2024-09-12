@@ -21,8 +21,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                       <?php foreach($pizzas as $pizza):?>
-                        <?php //print_r($saboresDaPizza);?>
+                        <?php foreach($pizzas as $pizza):?>
+                            
                             <tr>
                                 <td><?= $pizza["id"]?></td>
                                 <td><?= $pizza["borda"]?></td>
@@ -35,11 +35,15 @@
                                    </ul>
                                 </td>
                                 <td>
-                                    <form action="process/orders.php" method="POST" classs="form-group update-form">
-                                        <input type="hidden" name="type" value="update">
-                                        <input type="hidden" name="id" value="1">
-                                        <select name="status" class="formcontrol status-input">
-                                            <option value="">produção</option>
+                                    <form action="process/orders.php" method="POST" class="form-group update-form">
+                                        <input type="hidden" name="id" value="update">
+                                        <input type="hidden" name="type" value="<?= $pizza["id"] ?>">
+                                        <select name="status" class="form-control status-input">
+                                            <?php foreach($status as $statu):?>
+                                            <option value="<?= $statu['id']?>" <?php echo ($statu["id"] == $pizza["status"] ? "selected" : "" );?>>
+                                                <?= $statu['tipo']?>
+                                            </option>
+                                            <?php endforeach;?>
                                         </select>
                                         <button type="submit" class="delete-btn">
                                             <i class="fas fa-sync"></i>
@@ -47,9 +51,9 @@
                                     </form>
                                     </td>
                                 <td>
-                                    <form action="process/orders.php" method="POST">
-                                        <input type="hidden" name="type" value="delete">
-                                        <input type="hidden" name="id" value="1">
+                                    <form action="process/orders.php" method="POST" class="form-group update-form">
+                                        <input type="hidden" name="type" value="delete" >
+                                        <input type="hidden" name="id" value="<?= $pizza["id"] ?>">
                                         <button type="submit" class="delete-btn">
                                             <i class="fas fa-times"></i>
                                         </button>

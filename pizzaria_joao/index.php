@@ -25,7 +25,7 @@
 
     <div class="form-group">
          <label for="sabores">sabores (3 maximo)</label>
-        <select multiple name="sabores" id="sabores" class="form-control">
+        <select multiple name="sabores[]" id="sabores" class="form-control">
             <?php foreach($sabores as $sabor):?>
                     <option value="<?=$sabor['id']?>"><?=$sabor["nome"]?></option>
             <?php endforeach;?>

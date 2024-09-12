@@ -23,8 +23,9 @@
         $borda = $data["borda"];
         $massa = $data["massa"];
         $sabores = $data["sabores"];
+        
 
-        if(($sabores) > 3){
+        if((count($sabores)) > 3){
             $_SESSION["msg"] = "selecione no máximo 3 sabores";
             $_SESSION["status"] = "warning";
             
@@ -38,7 +39,7 @@
 
             $pizzaId = $conn->lastInsertId();
             
-            $stmt= $conn->prepare("INSERT INTO pizza_sabor (pizza_id, sabor_id) VALUES (:pizza, :sabor);");
+            $stmt = $conn->prepare("INSERT INTO pizza_sabor (pizzas_id, sabores_id) VALUES (:pizza, :sabor);");
 
             foreach($sabores as $sabor){
                 $stmt->bindParam(":pizza", $pizzaId,PDO::PARAM_INT);
@@ -46,7 +47,7 @@
 
                 $stmt->execute();
             }
-
+            
             $stmt = $conn->prepare("INSERT INTO pedidos (pizza_id, status_id) VALUES (:pizza, :status);");
 
             $statusId = 1;
@@ -58,7 +59,7 @@
             $_SESSION["msg"] = "pedido feito com sucesso";
             $_SESSION["status"] = "success";
         }
-
+        // print_r($sabores);
         header("Location: ..");
     }
 ?>
