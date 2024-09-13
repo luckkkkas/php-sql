@@ -2,11 +2,11 @@
     include_once("template/header.php");
     include_once("process/pizza.php");
 ?>
-<form action="process/pizza.php" method="POST" id="pizza-form">
+<form action="process/pizza.php" id="main-container" method="POST" id="pizza-form">
+    <h1>Monte sua pizza como desejar</h1>
     <div class="form-group">
-           <label for="massa">massas</label>
+           <label for="massa">Massas</label>
             <select name="massa" id="massa" class="form-control">
-                <option value="0">Selecione a Massa</option>
                 <?php foreach($massas as $massa):?>
                     <option value="<?= $massa["id"]?>"><?= $massa["tipo"]?></option>
                 <?php endforeach; ?>
@@ -14,9 +14,8 @@
     </div>
         
     <div class="form-group">
-        <label for="borda">borda</label>
+        <label for="borda">Bordas</label>
         <select name="borda" id="borda" class="form-control">
-            <option value="0">Selecione a borda</option>
                 <?php foreach($bordas as $borda):?>
                     <option value="<?= $borda['id']?>"><?= $borda["tipo"]?></option>
                 <?php endforeach;?>

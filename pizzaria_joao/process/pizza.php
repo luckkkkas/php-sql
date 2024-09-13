@@ -23,7 +23,6 @@
         $borda = $data["borda"];
         $massa = $data["massa"];
         $sabores = $data["sabores"];
-        
 
         if((count($sabores)) > 3){
             $_SESSION["msg"] = "selecione no máximo 3 sabores";

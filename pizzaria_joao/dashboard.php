@@ -2,7 +2,7 @@
     include_once("template/header.php");
     include_once("process/orders.php");
 ?>
-   <div class="main-container">
+   <div id="main-container">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -36,22 +36,22 @@
                                 </td>
                                 <td>
                                     <form action="process/orders.php" method="POST" class="form-group update-form">
-                                        <input type="hidden" name="id" value="update">
-                                        <input type="hidden" name="type" value="<?= $pizza["id"] ?>">
+                                        <input type="hidden" name="type" value="update">
+                                        <input type="hidden" name="id" value="<?= $pizza["id"] ?>">
                                         <select name="status" class="form-control status-input">
-                                            <?php foreach($status as $statu):?>
-                                            <option value="<?= $statu['id']?>" <?php echo ($statu["id"] == $pizza["status"] ? "selected" : "" );?>>
-                                                <?= $statu['tipo']?>
+                                            <?php foreach($status as $s):?>
+                                            <option value="<?= $s['id']?>" <?php echo ($s["id"] == $pizza["status"] ? "selected" : "" );?>>
+                                                <?= $s['tipo']?>
                                             </option>
                                             <?php endforeach;?>
                                         </select>
-                                        <button type="submit" class="delete-btn">
-                                            <i class="fas fa-sync"></i>
+                                        <button type="submit" class="update-btn">
+                                            <i class="fas fa-sync-alt"></i>
                                         </button>
                                     </form>
-                                    </td>
+                                </td>
                                 <td>
-                                    <form action="process/orders.php" method="POST" class="form-group update-form">
+                                    <form action="process/orders.php" method="POST" >
                                         <input type="hidden" name="type" value="delete" >
                                         <input type="hidden" name="id" value="<?= $pizza["id"] ?>">
                                         <button type="submit" class="delete-btn">

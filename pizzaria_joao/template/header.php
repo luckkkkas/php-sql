@@ -27,15 +27,9 @@
 <header>
         <nav class="navbar navbar-expand-lg">
             <a href="index.php" class="navbar-brand">
-                oi
+                <i class="fa-solid fa-pizza-slice"></i></i>
+                Faça seu pedido
             </a>
-            <div>
-                <ul class="navbar-nav">
-                    <li><a href=""></a>pedidos</li>
-                    <li><a href=""></a>sabores</li>
-                    <li><a href=""></a>massas</li>
-                </ul>
-            </div>
         </nav>
     </header>
     <?php if($msg !=""):?>

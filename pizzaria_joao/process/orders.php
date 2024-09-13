@@ -62,7 +62,6 @@ if($method === "GET"){
 
     // verifincando tipo de POST
 }else if($method ==="POST"){
-
     $type = $_POST["type"];
     //deletar pedido
     if($type === "delete"){
@@ -72,7 +71,18 @@ if($method === "GET"){
         $deleteQuery->execute();
 
         $_SESSION["msg"] = "pedido removido Com sucesso!";
-        $_SESSION["statu"] = "success";
+        $_SESSION["status"] = "success";
+        
+    }else if($type === "update"){
+        $pizzaId = $_POST["id"];
+        $statusId = $_POST["status"];
+        $updateQuery = $conn->prepare("UPDATE pedidos SET status_id = :status_id where pizza_id = :pizza_id;");
+        $updateQuery->bindParam(":pizza_id", $pizzaId, PDO::PARAM_INT);
+        $updateQuery->bindParam(":status_id", $statusId, PDO::PARAM_INT);
+        $updateQuery->execute();
+        
+        $_SESSION["msg"] = "pedido  {$pizzaID}  atualizado com sucesso!";
+        $_SESSION["status"] = "success";
     }
 
     //envia novamente a dashbord
